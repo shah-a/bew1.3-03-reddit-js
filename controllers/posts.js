@@ -11,6 +11,16 @@ module.exports = (app) => {
       });
   });
 
+  app.get('/posts/:id', (req, res) => {
+    Post.findById(req.params.id).lean()
+      .then(post => {
+        res.render('posts-show', { post });
+      })
+      .catch(err => {
+        console.log(err.message);
+      })
+  });
+
   // Create
   app.post('/posts/new', (req, res) => {
     // Init an instance of Post model
