@@ -11,6 +11,10 @@ module.exports = (app) => {
       });
   });
 
+  app.get('/posts/new', (req, res) => {
+    return res.render('posts-new');
+  });
+
   app.get('/posts/:id', (req, res) => {
     Post.findById(req.params.id).lean()
       .then(post => {

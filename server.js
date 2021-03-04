@@ -18,14 +18,6 @@ app.use(expressValidator());
 
 require('./controllers/posts')(app);
 
-app.get('/', (req, res) => {
-  return res.render('home');
-});
-
-app.get('/posts/new', (req, res) => {
-  return res.render('posts-new');
-});
-
 app.listen(process.env.PORT, () => {
   console.log(`Listening on port ${process.env.PORT}!`);
 });
