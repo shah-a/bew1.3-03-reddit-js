@@ -1,7 +1,9 @@
 const router = require('express').Router();
+const middleware = require('../middleware');
 const comments = require('./comments');
 const Post = require('../models/post');
 
+router.use('/new', middleware.requireAuth);
 router.use('/:postId/comments', comments);
 
 router.get('/new', (req, res) => {

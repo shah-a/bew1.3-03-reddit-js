@@ -5,6 +5,7 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const expressValidator = require('express-validator');
 const cookieParser = require('cookie-parser');
+const middleware = require('./middleware');
 const controllers = require('./controllers');
 
 const app = express();
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(expressValidator());
 app.use(cookieParser());
+app.use(middleware.checkAuth);
 
 app.use('/', controllers.home);
 app.use('/', controllers.auth);

@@ -1,8 +1,9 @@
 const router = require('express').Router({ mergeParams: true });
+const middleware = require('../middleware');
 const Post = require('../models/post');
 const Comment = require('../models/comment');
 
-router.post('/', (req, res) => {
+router.post('/', middleware.requireAuth, (req, res) => {
   const comment = new Comment(req.body);
   comment.save()
     .then(comment => {

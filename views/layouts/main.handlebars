@@ -19,21 +19,26 @@
   <nav class="navbar navbar-expand-sm navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">Reddit.js</a>
-      <a href="/posts/new" class="nav-link me-auto">New Post</a>
+      {{#if currentUser}}
+        <a href="/posts/new" class="nav-link me-auto">New Post</a>
+      {{/if}}
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ms-auto text-primary">
-          <a href="/sign-up" class="nav-link">Sign Up</a>
-          <a href="/login" class="nav-link">Login</a>
-          <a href="/logout" class="nav-link">Logout</a>
+          {{#if currentUser}}
+            <a href="/logout" class="nav-link">Logout</a>
+          {{else}}
+            <a href="/sign-up" class="nav-link">Sign Up</a>
+            <a href="/login" class="nav-link">Login</a>
+          {{/if}}
         </div>
       </div>
     </div>
   </nav>
 
-  <div class="container">
+  <div class="container mt-3">
     {{{body}}}
   </div>
 </body>
