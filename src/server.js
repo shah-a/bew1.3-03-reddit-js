@@ -4,6 +4,7 @@ require('./data/reddit-db');
 const express = require('express');
 const exphbs = require('express-handlebars');
 const expressValidator = require('express-validator');
+const cookieParser = require('cookie-parser');
 const controllers = require('./controllers');
 
 const app = express();
@@ -14,8 +15,10 @@ app.set('view engine', 'handlebars');
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(expressValidator());
+app.use(cookieParser());
 
 app.use('/', controllers.home);
+app.use('/', controllers.auth);
 app.use('/posts', controllers.posts);
 app.use('/n', controllers.subreddits);
 

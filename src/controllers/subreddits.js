@@ -7,7 +7,7 @@ router.get('/:subreddit', (req, res) => {
       res.render('posts-index', { posts });
     })
     .catch(err => {
-      console.log(err);
+      console.log(err.message);
     })
 });
 

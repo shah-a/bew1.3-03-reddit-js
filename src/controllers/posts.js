@@ -22,10 +22,10 @@ router.post('/new', (req, res) => {
   const post = new Post(req.body);
   post.save()
     .then(post => {
-      return res.redirect('/');
+      res.redirect('/');
     })
     .catch(err => {
-      console.log(err);
+      console.log(err.message);
     });
 });
 

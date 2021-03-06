@@ -16,7 +16,7 @@ router.post('/', (req, res) => {
       res.redirect(`/posts/${req.params.postId}`);
     })
     .catch(err => {
-      console.log(err);
+      console.log(err.message);
     });
 });
 

@@ -16,14 +16,20 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-primary">
+  <nav class="navbar navbar-expand-sm navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">Reddit.js</a>
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a href="/posts/new" class="nav-link">New Post</a>
-        </li>
-      </ul>
+      <a href="/posts/new" class="nav-link me-auto">New Post</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ms-auto text-primary">
+          <a href="/sign-up" class="nav-link">Sign Up</a>
+          <a href="/login" class="nav-link">Login</a>
+          <a href="/logout" class="nav-link">Logout</a>
+        </div>
+      </div>
     </div>
   </nav>
 
