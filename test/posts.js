@@ -5,7 +5,7 @@ const expect = chai.expect;
 chai.use(chaiHttp);
 
 const app = require('../src/server');
-const Post = require('../src/models/post');
+const { Post } = require('../src/models');
 
 describe('Posts', function () {
   const agent = chai.request.agent(app);

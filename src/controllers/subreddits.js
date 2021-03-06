@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Post = require('../models/post');
+const { Post } = require('../models');
 
 router.get('/:subreddit', (req, res) => {
   Post.find({ subreddit: req.params.subreddit }).lean()
