@@ -4,7 +4,7 @@ const should = chai.should();
 
 chai.use(chaiHttp);
 
-const app = require('../server');
+const app = require('../src/server');
 
 describe('Site', function() {
   it("Should have home page", function (done) {
