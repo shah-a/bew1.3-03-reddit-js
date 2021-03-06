@@ -13,7 +13,8 @@ describe('Posts', function () {
   const newPost = {
     title: 'unique title for testing',
     url: 'https://www.google.ca',
-    summary: 'unique summary for testing'
+    summary: 'unique summary for testing',
+    subreddit: 'unique subreddit for testing'
   };
 
   before(function (done) {
