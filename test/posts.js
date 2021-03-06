@@ -57,8 +57,4 @@ describe('Posts', function () {
           });
       });
   });
-
-  it("Should ...", function (done) {
-    done()
-  });
 });
