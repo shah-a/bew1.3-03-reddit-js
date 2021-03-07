@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const { requireAuth } = require('../middleware');
 const comments = require('./comments');
+const { requireAuth } = require('../middleware');
 const { Post, User } = require('../models');
 
 router.use('/new', requireAuth);

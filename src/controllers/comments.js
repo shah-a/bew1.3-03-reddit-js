@@ -1,7 +1,9 @@
 const router = require('express').Router({ mergeParams: true });
+const replies = require('./replies');
 const { requireAuth } = require('../middleware');
-const { Post, User } = require('../models');
-const { Comment } = require('../models');
+const { Post, User, Comment } = require('../models');
+
+router.use('/:commentId/replies', replies);
 
 router.post('/', requireAuth, (req, res) => {
   const comment = new Comment(req.body);
