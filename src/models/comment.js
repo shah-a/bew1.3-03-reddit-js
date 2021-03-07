@@ -9,6 +9,7 @@ const CommentSchema = new Schema({
 
 CommentSchema.pre('find', function (next) {
   this.populate('author');
+  this.populate('replies');
   next()
 });
 

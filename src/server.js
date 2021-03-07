@@ -23,6 +23,8 @@ app.use('/', controllers.auth);
 app.use('/posts', controllers.posts);
 app.use('/n', controllers.subreddits);
 
+app.use(express.static('public'))
+
 connectDb().then(() => {
   app.listen(process.env.PORT, () => {
     console.log(`Listening on port ${process.env.PORT}!`);
@@ -32,5 +34,3 @@ connectDb().then(() => {
 })
 
 module.exports = app;
-
-// TODO (backlog): implement database seeder

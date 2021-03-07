@@ -13,15 +13,9 @@
     </form>
     {{#if post.comments}}
       <p>Comments:</p>
-      <ul>
-        {{#each post.comments}}
-          <li class="mb-3">"{{this.content}}"</li>
-          <div class="text-end mb-3">
-            <p>By: {{this.author.username}} <small>({{this.createdAt}})</small></p>
-            <a href="/posts/{{../post._id}}/comments/{{this._id}}/replies/new">Reply</a>
-          </div>
-        {{/each}}
-      </ul>
+      {{#each post.comments}}
+        {{> comment comment=this post=../post}}
+      {{/each}}
     {{else}}
       <p>No Comments Yet</p>
     {{/if}}

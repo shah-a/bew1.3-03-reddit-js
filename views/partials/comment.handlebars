@@ -1,0 +1,10 @@
+<div class="indent">
+  <p class="mb-3">"{{comment.content}}"</p>
+  <div class="text-end mb-3">
+    <p>By: {{comment.author.username}} <small>({{comment.createdAt}})</small></p>
+    <a href="/posts/{{post._id}}/comments/{{comment._id}}/replies/new">Reply</a>
+  </div>
+  {{#each comment.replies}}
+    {{> comment comment=this post=../post}}
+  {{/each}}
+</div>
