@@ -35,7 +35,7 @@ describe('Auth', function () {
       .send(invalidAccount)
       .end(function (err, res) {
         if (err) done(err);
-        res.status.should.equal(401);
+        res.should.have.status(401);
         done();
       });
   });
@@ -46,7 +46,7 @@ describe('Auth', function () {
       .send(testAccount)
       .end(function (err, res) {
         if (err) done(err);
-        res.status.should.equal(200);
+        res.should.have.status(200);
         agent.should.have.cookie('nToken');
         done()
       });
@@ -58,8 +58,27 @@ describe('Auth', function () {
       .send(testAccount)
       .end(function (err, res) {
         if (err) done(err);
-        res.status.should.equal(200);
+        res.should.have.status(200);
         agent.should.have.cookie('nToken');
+        done();
+      });
+  });
+
+  it("Should remove JWT cookie upon logout", function (done) {
+    agent.get('/logout')
+      .end(function (err, res) {
+        if (err) done(err);
+        res.should.have.status(200);
+        agent.should.not.have.cookie('nToken');
+        done();
+      });
+  });
+
+  it("Should restrict unauthorized access to /posts/new", function (done) {
+    agent.get('/posts/new')
+      .end(function (err, res) {
+        if (err) done(err);
+        res.should.have.status(401);
         done();
       });
   });
