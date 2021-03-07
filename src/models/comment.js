@@ -6,6 +6,16 @@ const CommentSchema = new Schema({
   author: { type: Schema.Types.ObjectId, ref: 'User', required: true }
 }, { timestamps: true });
 
+CommentSchema.pre('find', function (next) {
+  this.populate('author');
+  next()
+});
+
+CommentSchema.pre('findOne', function (next) {
+  this.populate('author');
+  next()
+});
+
 const model = mongoose.model('Comment', CommentSchema);
 
 module.exports = model;
