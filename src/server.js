@@ -30,7 +30,7 @@ models.connectDb()
     })
   })
   .catch(err => {
-    console.log(err.message);
+    console.log(err);
   });
 
 module.exports = app;

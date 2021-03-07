@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
       res.render('posts-index', { posts });
     })
     .catch(err => {
-      console.log(err.message);
+      console.log(err);
     });
 });
 

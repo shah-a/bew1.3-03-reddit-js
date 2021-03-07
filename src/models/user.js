@@ -4,11 +4,13 @@ const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
   username: { type: String, required: true },
-  password: { type: String, select: false }
+  password: { type: String, select: false },
+  posts: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
+  comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }]
 }, { timestamps: true });
 
 UserSchema.pre('save', function (next) {
-  if (!this.isModified('password')) next();
+  if (!this.isModified('password')) return next();
   bcrypt.genSalt(10)
     .then(salt => {
       return bcrypt.hash(this.password, salt)
@@ -18,7 +20,7 @@ UserSchema.pre('save', function (next) {
       next();
     })
     .catch(err => {
-      console.log(err.message);
+      console.log(err);
     });
 });
 
@@ -28,7 +30,7 @@ UserSchema.methods.comparePassword = function (password, done) {
       done(result);
     })
     .catch(err => {
-      console.log(err.message);
+      console.log(err);
     });
 }
 
