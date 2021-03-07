@@ -7,7 +7,10 @@ const PostSchema = new Schema({
   summary: { type: String, required: true },
   subreddit: { type: String, required: true },
   author: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-  comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }]
+  comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
+  upvotes: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+  downvotes: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+  score: { type: Number, default: 0 }
 }, { timestamps: true });
 
 PostSchema.pre('find', function (next) {

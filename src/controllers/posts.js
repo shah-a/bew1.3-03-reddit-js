@@ -39,4 +39,36 @@ router.post('/new', (req, res) => {
     });
 });
 
+router.put('/:postId/upvote', requireAuth, async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.postId);
+    // if (post.upvotes.includes(res.locals.currentUser._id)) {
+      // res.status(400).send({ message: 'Already upvoted' })
+    // } else {
+      post.upvotes.push(res.locals.currentUser._id);
+      post.score = post.score + 1;
+      await post.save();
+      res.status(200).send({ message: 'upvote worked!' })
+    // }
+  } catch (err) {
+    res.status(400).send({ err });
+  }
+});
+
+router.put('/:postId/downvote', requireAuth, async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.postId);
+    // if (post.downvotes.includes(res.locals.currentUser._id)) {
+      // res.status(400).send({ message: 'Already downvoted' })
+    // } else {
+      post.downvotes.push(res.locals.currentUser._id);
+      post.score = post.score - 1;
+      await post.save();
+      res.status(200).send({ message: 'downvote worked!' })
+    // }
+  } catch (err) {
+    res.status(400).send({ err });
+  }
+});
+
 module.exports = router;

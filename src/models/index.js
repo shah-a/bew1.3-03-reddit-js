@@ -8,10 +8,6 @@ const connectDb = () => {
   return mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 }
 
-const seedDb = () => {
-  return "Not Implemented Yet"
-}
-
 module.exports = {
-  connectDb, seedDb, User, Post, Comment
+  connectDb, User, Post, Comment
 }

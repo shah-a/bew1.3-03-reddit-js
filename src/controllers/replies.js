@@ -25,7 +25,6 @@ router.post('/new', async (req, res) => {
     user = await User.findById(reply.author);
     comment.replies.unshift(reply);
     user.comments.unshift(reply);
-    console.log('comment:', comment)
     await comment.save();
     await user.save();
     res.redirect(`/posts/${req.params.postId}`);
