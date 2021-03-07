@@ -6,10 +6,11 @@ const cookieParser = require('cookie-parser');
 const { connectDb } = require('./models');
 const { checkAuth } = require('./middleware');
 const controllers = require('./controllers');
+const { date } = require('./utils');
 
 const app = express();
 
-app.engine('handlebars', exphbs());
+app.engine('handlebars', exphbs({ helpers: { date } }));
 app.set('view engine', 'handlebars');
 
 app.use(express.json());
