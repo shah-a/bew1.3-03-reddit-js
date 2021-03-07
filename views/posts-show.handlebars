@@ -13,9 +13,11 @@
     </form>
     {{#if post.comments}}
       <p>Comments:</p>
+      <ul class="list-group">
       {{#each post.comments}}
         {{> comment comment=this post=../post}}
       {{/each}}
+      </ul>
     {{else}}
       <p>No Comments Yet</p>
     {{/if}}
